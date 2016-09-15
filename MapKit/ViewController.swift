@@ -15,8 +15,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
     @IBOutlet weak var mapa: MKMapView!
     private let manejador = CLLocationManager()
     var currentLocation = CLLocation()
-    var first = true
-    var distance = 0
+    var distance = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +29,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
         if status == .AuthorizedWhenInUse{
             manejador.startUpdatingLocation()
             mapa.showsUserLocation = true
+            if(manager.location != nil){
+                insertPin(manager.location!.coordinate.latitude, longitude: manager.location!.coordinate.longitude,isUpdate: false, measuredDistance: 0)
+            }
         }
         else{
             manejador.stopUpdatingLocation()
@@ -38,25 +40,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let span = MKCoordinateSpanMake(0.015, 0.015)
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: manager.location!.coordinate.latitude, longitude: manager.location!.coordinate.longitude), span: span)
-        if(first || abs(manager.location!.distanceFromLocation(currentLocation)) > 50){
-            mapa.setRegion(region, animated: true)
-            first = false;
-            distance += 1
-            currentLocation = CLLocation.init(latitude: manager.location!.coordinate.latitude, longitude: manager.location!.coordinate.longitude)
-            let pin = MKPointAnnotation()
-            pin.coordinate.latitude = currentLocation.coordinate.latitude
-            pin.coordinate.longitude = currentLocation.coordinate.longitude
-            pin.title = "Long: \(currentLocation.coordinate.longitude), Lat: \(currentLocation.coordinate.latitude)"
-            pin.subtitle = "Ditancia recorrida: \(distance*50)"
-            mapa.addAnnotation(pin)
+        let measuredDistance = abs(manager.location!.distanceFromLocation(currentLocation))
+        if(measuredDistance > 50){
+            insertPin(manager.location!.coordinate.latitude, longitude: manager.location!.coordinate.longitude,isUpdate: true, measuredDistance: measuredDistance)
         }
     }
     
-    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
-        print("Me salí del mapa")
+    func insertPin( latitude: CLLocationDegrees, longitude: CLLocationDegrees,isUpdate:Bool, measuredDistance:Double){
+        let span = MKCoordinateSpanMake(0.015, 0.015)
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: span)
+        mapa.setRegion(region, animated: true)
+        currentLocation = CLLocation.init(latitude: latitude, longitude: longitude)
+        let pin = MKPointAnnotation()
+        pin.coordinate.latitude = currentLocation.coordinate.latitude
+        pin.coordinate.longitude = currentLocation.coordinate.longitude
+        pin.title = "Long: \(currentLocation.coordinate.longitude)º, Lat: \(currentLocation.coordinate.latitude)º"
+        if(isUpdate){
+            distance+=measuredDistance
+        }
+        let distanceP = String(format: "%.3f", distance)
+        pin.subtitle = "Ditancia recorrida: \(distanceP)m"
+        mapa.addAnnotation(pin)
     }
+    
     @IBAction func changeMapType(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex
         {
