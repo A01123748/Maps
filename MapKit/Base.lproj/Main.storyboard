@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Maps" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H9c-WV-5et">
+                                <rect key="frame" x="0.0" y="58" width="600" height="542"/>
+                            </mapView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NOU-w4-bdl">
+                                <rect key="frame" x="0.0" y="14" width="600" height="44"/>
+                                <items>
+                                    <navigationItem id="1os-Nq-kOz">
+                                        <nil key="title"/>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="L9j-9M-tnA">
+                                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="mI6-y8-OpT">
+                                                <rect key="frame" x="194" y="7" width="386" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="Normal"/>
+                                                    <segment title="Híbrido"/>
+                                                    <segment title="Satélite"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="changeMapType:" destination="BYZ-38-t0r" eventType="valueChanged" id="OyY-7W-uKR"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NOU-w4-bdl" firstAttribute="bottom" secondItem="H9c-WV-5et" secondAttribute="top" id="9GO-OR-CR5"/>
+                            <constraint firstItem="H9c-WV-5et" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="9NH-3X-8y0"/>
+                            <constraint firstItem="NOU-w4-bdl" firstAttribute="leading" secondItem="H9c-WV-5et" secondAttribute="leading" id="KIb-3t-xNg"/>
+                            <constraint firstItem="H9c-WV-5et" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="58" id="Pd6-Lh-9up"/>
+                            <constraint firstItem="H9c-WV-5et" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ppl-zN-5CN"/>
+                            <constraint firstItem="NOU-w4-bdl" firstAttribute="trailing" secondItem="H9c-WV-5et" secondAttribute="trailing" id="axl-E3-unf"/>
+                            <constraint firstAttribute="trailing" secondItem="H9c-WV-5et" secondAttribute="trailing" id="bKX-ag-Grw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapa" destination="H9c-WV-5et" id="YA8-WC-eZI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="380" y="337"/>
+        </scene>
+    </scenes>
+</document>
