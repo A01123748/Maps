@@ -64,7 +64,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
         print("Me salí del mapa")
     }
     @IBAction func changeMapType(sender: UISegmentedControl) {
-        
         switch sender.selectedSegmentIndex
         {
         case 0:
