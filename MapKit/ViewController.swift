@@ -52,9 +52,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
         mapa.setRegion(region, animated: true)
         currentLocation = CLLocation.init(latitude: latitude, longitude: longitude)
         let pin = MKPointAnnotation()
-        pin.coordinate.latitude = currentLocation.coordinate.latitude
-        pin.coordinate.longitude = currentLocation.coordinate.longitude
-        pin.title = "Long: \(currentLocation.coordinate.longitude)º, Lat: \(currentLocation.coordinate.latitude)º"
+        pin.coordinate.latitude = latitude
+        pin.coordinate.longitude = longitude
+        let latP = String(format: "%.3f", latitude)
+        let longP = String(format: "%.3f", longitude)
+        
+        pin.title = "Long: \(longP)º, Lat: \(latP)º"
         if(isUpdate){
             distance+=measuredDistance
         }

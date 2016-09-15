@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H9c-WV-5et">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H9c-WV-5et">
                                 <rect key="frame" x="0.0" y="58" width="600" height="498"/>
                             </mapView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NOU-w4-bdl">
@@ -44,7 +44,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NOU-w4-bdl" firstAttribute="bottom" secondItem="H9c-WV-5et" secondAttribute="top" id="9GO-OR-CR5"/>
-                            <constraint firstItem="H9c-WV-5et" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" constant="44" id="9NH-3X-8y0"/>
+                            <constraint firstItem="H9c-WV-5et" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="9NH-3X-8y0"/>
                             <constraint firstItem="NOU-w4-bdl" firstAttribute="leading" secondItem="H9c-WV-5et" secondAttribute="leading" id="KIb-3t-xNg"/>
                             <constraint firstItem="H9c-WV-5et" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="58" id="Pd6-Lh-9up"/>
                             <constraint firstItem="H9c-WV-5et" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ppl-zN-5CN"/>
