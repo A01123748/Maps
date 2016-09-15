@@ -17,28 +17,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H9c-WV-5et">
-                                <rect key="frame" x="0.0" y="58" width="600" height="542"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H9c-WV-5et">
+                                <rect key="frame" x="0.0" y="58" width="600" height="498"/>
                             </mapView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NOU-w4-bdl">
                                 <rect key="frame" x="0.0" y="14" width="600" height="44"/>
                                 <items>
                                     <navigationItem id="1os-Nq-kOz">
                                         <nil key="title"/>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="L9j-9M-tnA">
-                                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="mI6-y8-OpT">
-                                                <rect key="frame" x="194" y="7" width="386" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <segments>
-                                                    <segment title="Normal"/>
-                                                    <segment title="Híbrido"/>
-                                                    <segment title="Satélite"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="changeMapType:" destination="BYZ-38-t0r" eventType="valueChanged" id="OyY-7W-uKR"/>
-                                                </connections>
-                                            </segmentedControl>
-                                        </barButtonItem>
+                                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="pJ4-Ft-skF">
+                                            <rect key="frame" x="20" y="7" width="560" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Normal"/>
+                                                <segment title="Híbrido"/>
+                                                <segment title="Satélite"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="changeMapType:" destination="BYZ-38-t0r" eventType="valueChanged" id="sLY-mV-spi"/>
+                                            </connections>
+                                        </segmentedControl>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -46,7 +44,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NOU-w4-bdl" firstAttribute="bottom" secondItem="H9c-WV-5et" secondAttribute="top" id="9GO-OR-CR5"/>
-                            <constraint firstItem="H9c-WV-5et" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="9NH-3X-8y0"/>
+                            <constraint firstItem="H9c-WV-5et" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" constant="44" id="9NH-3X-8y0"/>
                             <constraint firstItem="NOU-w4-bdl" firstAttribute="leading" secondItem="H9c-WV-5et" secondAttribute="leading" id="KIb-3t-xNg"/>
                             <constraint firstItem="H9c-WV-5et" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="58" id="Pd6-Lh-9up"/>
                             <constraint firstItem="H9c-WV-5et" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ppl-zN-5CN"/>
@@ -54,6 +52,8 @@
                             <constraint firstAttribute="trailing" secondItem="H9c-WV-5et" secondAttribute="trailing" id="bKX-ag-Grw"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapa" destination="H9c-WV-5et" id="YA8-WC-eZI"/>
                     </connections>

@@ -30,7 +30,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
         if status == .AuthorizedWhenInUse{
             manejador.startUpdatingLocation()
             mapa.showsUserLocation = true
-            let span = MKCoordinateSpanMake(0.015, 0.015)
+            /*let span = MKCoordinateSpanMake(0.015, 0.015)
             let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: manager.location!.coordinate.latitude, longitude: manager.location!.coordinate.longitude), span: span)
             mapa.setRegion(region, animated: true)
                 currentLocation = CLLocation.init(latitude: manager.location!.coordinate.latitude, longitude: manager.location!.coordinate.longitude)
@@ -39,7 +39,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
                 pin.coordinate.longitude = currentLocation.coordinate.longitude
                 pin.title = "Long: \(currentLocation.coordinate.longitude), Lat: \(currentLocation.coordinate.latitude)"
                 pin.subtitle = "Ditancia recorrida: \(distance*50)"
-                mapa.addAnnotation(pin)
+                mapa.addAnnotation(pin)*/
         }
         else{
             manejador.stopUpdatingLocation()
@@ -48,7 +48,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if(abs(manager.location!.distanceFromLocation(currentLocation)) > 50){
+        let span = MKCoordinateSpanMake(0.015, 0.015)
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: manager.location!.coordinate.latitude, longitude: manager.location!.coordinate.longitude), span: span)
+        if(first || abs(manager.location!.distanceFromLocation(currentLocation)) > 50){
+            mapa.setRegion(region, animated: true)
+            first = false;
             distance += 1
             currentLocation = CLLocation.init(latitude: manager.location!.coordinate.latitude, longitude: manager.location!.coordinate.longitude)
             let pin = MKPointAnnotation()
